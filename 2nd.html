@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Application Form</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center horizontally and vertically */
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh; /* Ensure full screen height */
+        }
+
+        /* Floating Dots Animation */
+        .dots-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .dot {
+            position: absolute;
+            bottom: -10px;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(255, 100, 150, 0.8), rgba(255, 100, 150, 0));
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+        }
+
+        /* Animated Heart Background */
+        .heart-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-animation span {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: heartAnimation 5s infinite linear;
+        }
+
+        @keyframes heartAnimation {
+            0% { transform: scale(0.1) translate(0, 0); }
+            50% { transform: scale(1) translate(200px, 200px); }
+            100% { transform: scale(0.1) translate(0, 0); }
+        }
+
+        /* Glassmorphism Card */
+        .container {
+            background: rgba(255, 255, 255, 0.1); /* Glass effect */
+            backdrop-filter: blur(10px); /* Blur effect */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto; /* Ensures the container is centered horizontally */
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Border for better visibility */
+        }
+
+        h2 {
+            color: #ff69b4; /* Bright pink */
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            color: #ddd;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+            font-size: 14px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:focus, select:focus {
+            border-color: #ff69b4;
+            outline: none;
+            background: rgba(255, 255, 255, 0.8); /* Focused background */
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            color: #ddd;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            transition: 0.3s ease-in-out;
+        }
+
+        .checkbox-group label:hover {
+            background: #ffebee;
+            border-color: #ff69b4;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #d81b60;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        /* Hidden Button for Redirection */
+        .redirect-button {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .redirect-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Dots Container -->
+    <div class="dots-container"></div>
+
+    <!-- Animated Hearts Background -->
+    <div class="heart-animation">
+        <span style="top: 20%; left: 20%; width: 40px; height: 40px;"></span>
+        <span style="top: 50%; left: 70%; width: 30px; height: 30px;"></span>
+        <span style="top: 80%; left: 30%; width: 60px; height: 60px;"></span>
+        <span style="top: 30%; left: 80%; width: 50px; height: 50px;"></span>
+        <span style="top: 10%; left: 50%; width: 20px; height: 20px;"></span>
+    </div>
+
+    <!-- Form Container -->
+    <div class="container">
+        <h2>💌 Valentine's Application 💌</h2>
+        <form id="valentineForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" required placeholder="Enter your full name">
+
+            <label for="nickname">Preferred Nickname:</label>
+            <input type="text" id="nickname" required placeholder="Your nickname">
+
+            <label for="food">Favorite Treat:</label>
+            <input type="text" id="food" required placeholder="E.g., Chocolate, Sushi, Ice Cream">
+
+            <label>Love Language (Select all that apply):</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="foodLove"> Food Treats</label>
+                <label><input type="checkbox" id="compliments"> Endless Compliments</label>
+                <label><input type="checkbox" id="hugs"> Hugs & Cuddles</label>
+                <label><input type="checkbox" id="gifts"> Thoughtful Gifts</label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="footer-text">
+            ❤️ Made with love by KNate06 ❤️
+        </div>
+
+        <!-- Redirect Button (Initially Hidden) -->
+        <button class="redirect-button" id="redirectBtn" onclick="window.location.href='./dist/index.html';">Go to Another Page</button>
+    </div>
+
+    <script>
+        // Generate Floating Dots
+        function createDots() {
+            const container = document.querySelector(".dots-container");
+            const colors = ["rgba(255, 100, 150, 0.8)", "rgba(255, 150, 200, 0.8)", "rgba(255, 200, 220, 0.8)"];
+            for (let i = 0; i < 50; i++) {
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                dot.style.width = `${Math.random() * 15 + 5}px`; // Random size
+                dot.style.height = dot.style.width;
+                dot.style.left = `${Math.random() * 100}vw`;
+                dot.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                dot.style.animationDelay = `${Math.random() * 3}s`;
+                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(dot);
+            }
+        }
+        createDots();
+
+        // Form Submit Handling
+        const form = document.getElementById("valentineForm");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent the form from submitting immediately
+            alert("Thank you for submitting your Valentine's application! 🎉");
+
+            // Show the redirect button after the alert
+            document.getElementById("redirectBtn").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
