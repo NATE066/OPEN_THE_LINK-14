@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESTTTTT</title>
+    <title>Valentine's Surprise</title>
     
     <!-- Google Font: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -88,7 +88,7 @@
 
         /* Header */
         h1 {
-            color: #lightblue;
+            color: #ff6496;
             font-size: 28px;
             font-weight: 600;
             margin-bottom: 15px;
@@ -114,7 +114,6 @@
             cursor: pointer;
             margin-top: 20px;
             transition: background 0.3s ease-in-out, transform 0.2s ease;
-            display: inline-block;
         }
 
         .btn:hover {
@@ -131,7 +130,7 @@
 
         /* Love Message */
         .love-message {
-            color: #blue;
+            color: #ff6496;
             font-size: 22px;
             font-weight: 600;
             margin-top: 15px;
@@ -211,21 +210,15 @@
     <!-- Floating Dots Container -->
     <div class="dots-container"></div>
 
-    <!-- Hidden Audio (Autoplay, Loop, Hidden) -->
-    <audio autoplay loop hidden>
-        <source src="your-audio-file.mp3" type="audio/mp3">
-       <!-- Your browser does not support the audio element. -->
-    </audio>
-
     <div class="card">
-        <h1 class="fade-up">This is only a Test</h1>
-        <p class="fade-up">This is a Test</p>
-        <button class="btn fade-up" onclick="revealGif()">Tap</button>
+        <h1 class="fade-up">Happy Valentine's Day! 💖</h1>
+        <p class="fade-up">May this day bring you love, joy, and happiness. You are truly appreciated and valued.</p>
+        <button class="btn fade-up" onclick="revealGif()">Open Your Surprise</button>
 
         <!-- GIF and Message (Initially Hidden) -->
         <div id="surprise" class="hidden">
-            <img src="https://media1.tenor.com/m/uM8lWfis_lcAAAAC/stare-cat.gif" alt="Surprise GIF" width="250" style="margin-top: 20px; border-radius: 10px;">
-            <h2 class="love-message">Eme lang</h2>
+            <img src="https://i.pinimg.com/originals/b4/32/91/b432919ea8e2dabfab557f8da6db73ec.gif" alt="Surprise GIF" width="250" style="margin-top: 20px; border-radius: 10px;">
+            <h2 class="love-message">I love you, Princess! ❤️</h2>
             <button class="btn" onclick="nextPage()">Go to Next Page</button>
         </div>
     </div>
